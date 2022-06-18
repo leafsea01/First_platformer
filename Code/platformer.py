@@ -11,16 +11,18 @@ width,height = 1920,1080
 window = pygame.display.set_mode((width,height))
 
 
+tile_size = 80
+number_tile_y = (width/tile_size) + 1
+number_tile_x = (height/tile_size) + 1
+
 
 
 #load images
 bg_img = pygame.image.load('../Bilder/bg.jpg')
 bg_img = pygame.transform.scale(bg_img,(width,height))
 grass_img = pygame.image.load('../Bilder/grass.png')
-
-tile_size = 20
-number_tile_y = (width/tile_size) + 1
-number_tile_x = (height/tile_size) + 1
+knight_img = pygame.image.load('../Bilder/knight.png')
+knight_img = pygame.transform.scale(knight_img,(tile_size,0.833*tile_size))
 
 
 
@@ -54,7 +56,9 @@ while runing:
     #draw background
     window.blit(bg_img,(0,0))
     
+    
     draw_grid()
+    window.blit(knight_img,(0,20))
     for event in pygame.event.get():
         if event.type == QUIT:
             runing = False
